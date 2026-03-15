@@ -85,6 +85,7 @@ section{padding:100px 24px}
 .stem-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,0.4)}
 .stem-card-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
 .stem-type{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:3px 8px;border-radius:4px;display:inline-block;background:var(--accent-dim);color:var(--accent)}
+.stem-type.solo{background:rgba(245,158,11,0.12);color:var(--amber)}
 .stem-status{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;padding:3px 8px;border-radius:4px}
 .stem-status.live{background:rgba(34,197,94,0.12);color:var(--green)}
 .stem-status.judging{background:rgba(245,158,11,0.12);color:var(--amber)}
@@ -197,14 +198,14 @@ footer{padding:32px;text-align:center;font-size:12px;color:var(--text3);border-t
     <div class="hero-counter">
       <div class="hero-counter-item">
         <div class="hero-counter-num" id="counter-challenges">847</div>
-        <div class="hero-counter-label">stem challenges</div>
+        <div class="hero-counter-label">riff bounties</div>
       </div>
       <div class="hero-counter-item">
         <div class="hero-counter-num" id="counter-musicians">2,419</div>
         <div class="hero-counter-label">musicians competing</div>
       </div>
       <div class="hero-counter-item">
-        <div class="hero-counter-num" id="counter-paid">$184k</div>
+        <div class="hero-counter-num" id="counter-paid">$47k</div>
         <div class="hero-counter-label">paid to artists</div>
       </div>
     </div>
@@ -212,7 +213,7 @@ footer{padding:32px;text-align:center;font-size:12px;color:var(--text3);border-t
     <div class="hero-ownership" id="hero-ownership">human performance = real authorship. real ownership. real royalties.</div>
     <p class="hero-sub" id="hero-sub">Your Suno track slaps but the vocal sounds like a ghost. Post the stem. Set the bounty. A real musician makes it hit different -- and you own the result.</p>
     <div class="hero-btns" id="hero-btns">
-      <button class="btn-primary" onclick="document.getElementById('wall').scrollIntoView({behavior:'smooth'})">browse challenges &#8595;</button>
+      <button class="btn-primary" onclick="document.getElementById('wall').scrollIntoView({behavior:'smooth'})">browse bounties &#8595;</button>
       <button class="btn-ghost" onclick="switchRole('stemsmith')">i'm a musician</button>
     </div>
   </div>
@@ -234,7 +235,7 @@ footer{padding:32px;text-align:center;font-size:12px;color:var(--text3);border-t
 <!-- THE WALL - Browse Stems -->
 <section class="browse-section" id="wall">
   <div class="section-inner">
-    <div class="section-tag">the wall</div>
+    <div class="section-tag">riff bounties</div>
     <div class="section-title" id="wall-title">every stem that needs a human</div>
     <div class="section-sub" id="wall-sub">click one. hear the draft. submit your take. win the bounty.</div>
     <div class="browse-filters" id="filters">
@@ -244,9 +245,9 @@ footer{padding:32px;text-align:center;font-size:12px;color:var(--text3);border-t
       <div class="browse-filter" data-filter="bass">bass</div>
       <div class="browse-filter" data-filter="drums">drums</div>
       <div class="browse-filter" data-filter="keys">keys</div>
-      <div class="browse-filter" data-filter="production">production</div>
-      <div class="browse-filter" data-filter="topline">topline</div>
+      <div class="browse-filter" data-filter="solo">solo</div>
       <div class="browse-filter" data-filter="mix">mix</div>
+      <div class="browse-filter" data-filter="topline">topline</div>
     </div>
     <div class="browse-grid" id="browse-grid"></div>
   </div>
@@ -269,7 +270,7 @@ footer{padding:32px;text-align:center;font-size:12px;color:var(--text3);border-t
         <div class="how-num">2</div>
         <div class="how-icon">&#127919;</div>
         <h3>set the bounty</h3>
-        <p>Name your price, write the brief, set the deadline. Musicians compete on your exact stem. You get multiple takes to choose from.</p>
+        <p>Name your price ($20-$150), write the brief, set the deadline. Musicians compete on your exact stem. You get multiple takes to choose from.</p>
       </div>
       <div class="how-card">
         <div class="how-num">3</div>
@@ -321,9 +322,9 @@ const roleContent = {
     h1: 'AI made the song.<br><span class="glow">You make it real.</span>',
     ownership: 'human performance = real authorship. real ownership. real royalties.',
     sub: 'Your Suno track slaps but the vocal sounds like a ghost. Post the stem. Set the bounty. A real musician makes it hit different -- and you own the result.',
-    btns: '<button class="btn-primary" onclick="document.getElementById(\'wall\').scrollIntoView({behavior:\'smooth\'})">post a challenge</button><button class="btn-ghost" onclick="switchRole(\'stemsmith\')">i\'m a musician</button>',
+    btns: '<button class="btn-primary" onclick="document.getElementById(\'wall\').scrollIntoView({behavior:\'smooth\'})">post a bounty</button><button class="btn-ghost" onclick="switchRole(\'stemsmith\')">i\'m a musician</button>',
     wallTitle: 'every stem that needs a human',
-    wallSub: 'browse open challenges. hear the drafts. find the right stemsmith.',
+    wallSub: 'browse open bounties. hear the drafts. find the right stemsmith.',
     howTitle: 'three moves. better song.',
     howCards: `
       <div class="how-card"><div class="how-num">1</div><div class="how-icon">&#127925;</div><h3>drop the draft</h3><p>Upload your Suno, Udio, or any AI track. Pick the one stem that gives it away as AI -- the vocal, the guitar, whatever sounds fake.</p></div>
@@ -338,10 +339,10 @@ const roleContent = {
     sub: 'Creators have AI tracks that almost slap. They need the one stem a machine can\'t fake. Nail the take. Win the bounty. No proposals. No scope creep. Just play.',
     btns: '<button class="btn-primary" onclick="document.getElementById(\'wall\').scrollIntoView({behavior:\'smooth\'})">browse open bounties &#8595;</button><button class="btn-ghost" onclick="switchRole(\'creator\')">i\'m a creator</button>',
     wallTitle: 'open bounties',
-    wallSub: 'click one. hear the draft. submit your take. win the bounty.',
+    wallSub: 'click one. hear the draft. submit your take. claim the bounty.',
     howTitle: 'three moves. get paid.',
     howCards: `
-      <div class="how-card"><div class="how-num">1</div><div class="how-icon">&#127911;</div><h3>find your stem</h3><p>Browse the wall. Filter by instrument. Find challenges that match your skills -- vocal, guitar, bass, drums, keys, production, whatever you do best.</p></div>
+      <div class="how-card"><div class="how-num">1</div><div class="how-icon">&#127911;</div><h3>find your bounty</h3><p>Browse the riff bounties. Filter by instrument. Find bounties that match your skills -- vocal, guitar, bass, solo, mix, whatever you do best.</p></div>
       <div class="how-card"><div class="how-num">2</div><div class="how-icon">&#127908;</div><h3>record your take</h3><p>Download the draft. Record your stem. Upload it. No back-and-forth with the creator. One take, one brief, one chance to show what you can do.</p></div>
       <div class="how-card"><div class="how-num">3</div><div class="how-icon">&#128176;</div><h3>win the bounty</h3><p>If the creator picks your take, you get paid instantly. Your performance, your credit, your royalty share. Compete on feel and taste -- not freelance admin.</p></div>
     `
@@ -400,29 +401,34 @@ const songNames = [
   "Mind Bend","Next Level","Out Run","Park Life","Rest Stop"
 ];
 
-const stemTypes = ['vocal','guitar','bass','drums','keys','production','topline','mix'];
+const stemTypes = ['vocal','guitar','bass','solo','mix','drums','keys','topline'];
 const statuses = ['live','live','live','live','judging','judging','won','won','won','closed'];
 const briefs = [
-  "The melody is there. The vocal sounds like plastic. Give it breath.",
-  "Needs a guitar hook that cuts through the synths without overpowering them.",
-  "The low end is muddy AI soup. Need a real bass player to lock the groove.",
-  "Drums sound programmed because they are. Need real pocket and dynamics.",
-  "Keys sound like a preset. Need someone who knows Rhodes from their bones.",
-  "The arrangement works but the production sounds flat. Need analog warmth.",
-  "Topline melody is good but the phrasing is robotic. Make it conversational.",
-  "Mix is competent but lifeless. Need someone with taste and good monitoring.",
-  "Need a vocal that sounds like it was recorded at 3am, not in a server farm.",
-  "Guitar needs to breathe. The AI played every note right and none of them matter.",
-  "The bass just needs to groove. Not show off. Just groove.",
-  "Need drum fills that surprise me. AI plays it safe. Don't play it safe.",
-  "Piano part is technically perfect which is exactly why it sounds wrong.",
-  "The synth pad needs texture. Layer something real underneath it.",
-  "Rewrite the topline. Keep the chord changes. Make the melody singable.",
-  "Everything is there except emotion. Add it wherever you hear it missing.",
-  "Strip the vocal back. Less processing. More raw. Let imperfections through.",
-  "This needs a slide guitar that sounds like late-night driving.",
-  "The 808 hits hard but the hi-hats are dead. Need a real cymbal performance.",
-  "Acoustic guitar needs fingerpicking that sounds human. Nail the micro-timing.",
+  "Need a real vocal take. Male, raspy, indie rock feel. The AI vocal is close but it sounds like plastic.",
+  "Looking for a bass line -- simple and groovy. Think Mac DeMarco pocket. Don't overthink it.",
+  "Need a guitar riff for the intro. Something crunchy, mid-gain, 4 bars. Key of E minor.",
+  "The solo section needs a real guitar solo. 8 bars, bluesy, Mayer-ish. Backing track provided.",
+  "This mix needs a human ear. Levels are off, the low end is muddy, vocals are buried.",
+  "Need a female vocal for the chorus. Breathy, Billie Eilish type. Lyrics and melody provided.",
+  "Acoustic guitar part -- fingerpicking, Travis picking style. Needs to sit under the vocal.",
+  "Bass line for a lo-fi hip hop track. Simple, deep, Rhodes-y. Just lock the groove.",
+  "Need someone to mix and master this. 6 stems provided. Indie pop, needs to sound warm not clinical.",
+  "Guitar hook for the chorus. Clean tone, chorus pedal, something catchy and simple.",
+  "Drum track is AI and it sounds like it. Need a real drummer to lay down a simple groove.",
+  "Vocal harmonies for the bridge. Three-part, close harmony. Lead melody provided for reference.",
+  "Need a slide guitar part. Lap steel or regular slide. Country-adjacent, not twangy.",
+  "Bass line that follows the kick pattern but adds some fills in the transitions.",
+  "Need a topline melody and lyrics for the verse. Chord progression is Am - F - C - G.",
+  "Electric guitar rhythm part. Clean with a little drive. Funk-influenced, tight sixteenths.",
+  "The whole track needs mixing. Sounds flat and lifeless. Make it breathe.",
+  "Solo over the bridge -- 4 bars, anything goes. Guitar, keys, or sax. Surprise me.",
+  "Need real drums. The track is 92 BPM, straight feel, laid back. Kick and snare focused.",
+  "Vocal take for a demo. Doesn't need to be perfect -- needs to be real. Male or female.",
+  "Rhythm guitar -- strummy, open chords, Nashville tuning would be amazing.",
+  "Need a piano part under the vocal. Simple, emotional, maybe some sustain pedal work.",
+  "Bass -- pick bass, punk energy, root notes with some octave jumps. Fast and sloppy is fine.",
+  "Guitar lead line for the outro. Delay-heavy, ambient, U2/Edge vibes.",
+  "Mix this track. The vocal needs to sit on top. Everything else can be a little lo-fi.",
 ];
 
 const firstNames = [
@@ -439,7 +445,7 @@ function randInt(a,b){return Math.floor(Math.random()*(b-a+1))+a}
 function generateStem(i){
   const type = rand(stemTypes);
   const status = i < 20 ? rand(['live','live','judging']) : rand(statuses);
-  const bounty = rand([50,75,100,100,150,150,200,200,250,300,300,400,500,600,750,1000]);
+  const bounty = rand([20,25,25,30,30,35,40,40,50,50,50,60,75,75,100,100,125,150]);
   const takes = status === 'live' ? randInt(0,8) : status === 'judging' ? randInt(3,12) : randInt(2,15);
   const hours = status === 'live' ? randInt(2,72) : 0;
   return {
@@ -566,7 +572,7 @@ buildMarquee();
 setTimeout(()=>{
   animateCounter(document.getElementById('counter-challenges'),847);
   animateCounter(document.getElementById('counter-musicians'),2419);
-  animateCounter(document.getElementById('counter-paid'),184,'$','k');
+  animateCounter(document.getElementById('counter-paid'),47,'$','k');
 },300);
 </script>
 </body>
