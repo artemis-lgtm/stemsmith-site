@@ -7,11 +7,12 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#0a0a0f;--bg2:#111118;--bg3:#1a1a25;--bg4:#222230;
-  --text:#e8e8f0;--text2:#9090a8;--text3:#606078;
-  --accent:#c864ff;--accent2:#8b5cf6;--green:#22c55e;--amber:#f59e0b;
-  --red:#ef4444;--blue:#3b82f6;--pink:#ec4899;--cyan:#06b6d4;
-  --card:#13131f;--border:#2a2a3a;
+  --bg:#080b0e;--bg2:#0c1014;--bg3:#131a1e;--bg4:#1a2328;
+  --text:#e0e8ec;--text2:#8a9ca8;--text3:#566a76;
+  --accent:#0d9488;--accent2:#0a7a70;--accent-glow:rgba(13,148,136,0.3);
+  --accent-dim:rgba(13,148,136,0.12);
+  --green:#22c55e;--amber:#f59e0b;
+  --card:#0e1418;--border:#1e2e36;
   --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
 }
 html{scroll-behavior:smooth}
@@ -20,8 +21,9 @@ a{color:inherit;text-decoration:none}
 button{cursor:pointer;font-family:var(--font)}
 
 /* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,15,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-.nav-logo{font-size:18px;font-weight:800;letter-spacing:-0.5px}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 32px;display:flex;align-items:center;justify-content:space-between;background:rgba(8,11,14,0.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-left{display:flex;align-items:center;gap:32px}
+.nav-logo{font-size:18px;font-weight:800;letter-spacing:-0.5px;padding:16px 0}
 .nav-logo span{color:var(--accent)}
 .nav-links{display:flex;gap:24px;align-items:center}
 .nav-links a{font-size:13px;color:var(--text2);transition:color 0.2s}
@@ -29,20 +31,27 @@ button{cursor:pointer;font-family:var(--font)}
 .nav-cta{background:var(--accent);color:#fff;padding:8px 20px;border-radius:8px;font-size:13px;font-weight:600;border:none;transition:all 0.2s}
 .nav-cta:hover{background:var(--accent2);transform:translateY(-1px)}
 
+/* ROLE TABS */
+.role-tabs{display:flex;align-items:stretch;margin-left:auto;height:100%}
+.role-tab{padding:18px 24px;font-size:13px;font-weight:600;color:var(--text3);background:none;border:none;border-bottom:2px solid transparent;transition:all 0.2s;cursor:pointer;letter-spacing:0.3px}
+.role-tab:hover{color:var(--text2)}
+.role-tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+
 /* HERO */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(200,100,255,0.08) 0%,transparent 70%);pointer-events:none}
+.hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(13,148,136,0.06) 0%,transparent 70%);pointer-events:none}
 .hero-tag{font-size:13px;color:var(--accent);letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-bottom:24px}
 .hero-counter{display:flex;gap:40px;justify-content:center;margin-bottom:32px}
 .hero-counter-item{text-align:center}
 .hero-counter-num{font-size:36px;font-weight:800;color:var(--text);letter-spacing:-1px;font-variant-numeric:tabular-nums}
 .hero-counter-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;margin-top:4px}
-.hero h1{font-size:clamp(42px,7vw,82px);font-weight:900;letter-spacing:-2px;line-height:0.95;margin-bottom:24px}
-.hero h1 .glow{color:var(--accent);text-shadow:0 0 60px rgba(200,100,255,0.3)}
+.hero h1{font-size:clamp(42px,7vw,82px);font-weight:900;letter-spacing:-2px;line-height:0.95;margin-bottom:16px}
+.hero h1 .glow{color:var(--accent);text-shadow:0 0 60px var(--accent-glow)}
+.hero-ownership{font-size:14px;color:var(--accent);font-weight:500;margin-bottom:24px;letter-spacing:0.5px;opacity:0.85}
 .hero-sub{font-size:18px;color:var(--text2);max-width:540px;line-height:1.6;margin-bottom:40px}
 .hero-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
 .btn-primary{background:var(--accent);color:#fff;padding:14px 32px;border-radius:10px;font-size:15px;font-weight:700;border:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px}
-.btn-primary:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,100,255,0.3)}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 8px 30px var(--accent-glow)}
 .btn-ghost{background:transparent;color:var(--text2);padding:14px 32px;border-radius:10px;font-size:15px;font-weight:600;border:1px solid var(--border);transition:all 0.2s}
 .btn-ghost:hover{border-color:var(--text3);color:var(--text)}
 
@@ -52,11 +61,11 @@ button{cursor:pointer;font-family:var(--font)}
 .marquee-item{display:flex;align-items:center;gap:10px;padding:10px 20px;background:var(--bg3);border-radius:10px;white-space:nowrap;flex-shrink:0;border:1px solid var(--border)}
 .marquee-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 .marquee-dot.live{background:var(--green);box-shadow:0 0 8px var(--green)}
-.marquee-dot.won{background:var(--amber)}
-.marquee-dot.new{background:var(--blue)}
+.marquee-dot.won{background:var(--accent)}
+.marquee-dot.new{background:var(--accent)}
 .marquee-song{font-size:13px;font-weight:600}
 .marquee-stem{font-size:12px;color:var(--text2)}
-.marquee-bounty{font-size:13px;font-weight:700;color:var(--green)}
+.marquee-bounty{font-size:13px;font-weight:700;color:var(--accent)}
 @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 /* SECTION COMMON */
@@ -75,33 +84,22 @@ section{padding:100px 24px}
 .stem-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;cursor:pointer;transition:all 0.2s;position:relative;overflow:hidden}
 .stem-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,0.4)}
 .stem-card-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
-.stem-type{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:3px 8px;border-radius:4px;display:inline-block}
-.stem-type.vocal{background:rgba(236,72,153,0.15);color:var(--pink)}
-.stem-type.guitar{background:rgba(245,158,11,0.15);color:var(--amber)}
-.stem-type.bass{background:rgba(59,130,246,0.15);color:var(--blue)}
-.stem-type.drums{background:rgba(239,68,68,0.15);color:var(--red)}
-.stem-type.keys{background:rgba(6,182,212,0.15);color:var(--cyan)}
-.stem-type.production{background:rgba(139,92,246,0.15);color:var(--accent2)}
-.stem-type.topline{background:rgba(34,197,94,0.15);color:var(--green)}
-.stem-type.mix{background:rgba(200,100,255,0.15);color:var(--accent)}
+.stem-type{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:3px 8px;border-radius:4px;display:inline-block;background:var(--accent-dim);color:var(--accent)}
 .stem-status{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;padding:3px 8px;border-radius:4px}
-.stem-status.live{background:rgba(34,197,94,0.15);color:var(--green)}
-.stem-status.judging{background:rgba(245,158,11,0.15);color:var(--amber)}
-.stem-status.won{background:rgba(200,100,255,0.15);color:var(--accent)}
-.stem-status.closed{background:rgba(96,96,120,0.1);color:var(--text3)}
+.stem-status.live{background:rgba(34,197,94,0.12);color:var(--green)}
+.stem-status.judging{background:rgba(245,158,11,0.12);color:var(--amber)}
+.stem-status.won{background:var(--accent-dim);color:var(--accent)}
+.stem-status.closed{background:rgba(86,106,118,0.1);color:var(--text3)}
 .stem-song{font-size:15px;font-weight:700;margin-bottom:4px;line-height:1.3}
 .stem-brief{font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.stem-meta{display:flex;gap:16px;font-size:12px;color:var(--text3)}
-.stem-meta-item{display:flex;align-items:center;gap:4px}
-.stem-bounty{font-size:16px;font-weight:800;color:var(--green);margin-top:12px;display:flex;justify-content:space-between;align-items:center}
+.stem-bounty{font-size:16px;font-weight:800;color:var(--accent);margin-top:12px;display:flex;justify-content:space-between;align-items:center}
 .stem-takes{font-size:11px;color:var(--text3);font-weight:400}
-.stem-card .waveform{position:absolute;bottom:0;left:0;right:0;height:30px;opacity:0.08}
 
 /* HOW IT WORKS */
 .how-section{background:var(--bg2)}
 .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .how-card{padding:32px;background:var(--bg);border:1px solid var(--border);border-radius:16px;position:relative}
-.how-num{font-size:48px;font-weight:900;color:var(--accent);opacity:0.15;position:absolute;top:20px;right:24px;line-height:1}
+.how-num{font-size:48px;font-weight:900;color:var(--accent);opacity:0.12;position:absolute;top:20px;right:24px;line-height:1}
 .how-icon{font-size:28px;margin-bottom:16px}
 .how-card h3{font-size:18px;font-weight:700;margin-bottom:8px}
 .how-card p{font-size:14px;color:var(--text2);line-height:1.6}
@@ -109,17 +107,22 @@ section{padding:100px 24px}
 /* TWO SIDES */
 .sides{display:grid;grid-template-columns:1fr 1fr;gap:2px}
 .side{padding:80px 48px;display:flex;flex-direction:column;justify-content:center}
-.side-creator{background:linear-gradient(135deg,rgba(200,100,255,0.05),var(--bg))}
-.side-musician{background:linear-gradient(135deg,rgba(34,197,94,0.05),var(--bg))}
-.side-label{font-size:11px;text-transform:uppercase;letter-spacing:2px;font-weight:600;margin-bottom:16px}
-.side-label.creator{color:var(--accent)}
-.side-label.musician{color:var(--green)}
+.side-creator{background:linear-gradient(135deg,rgba(13,148,136,0.04),var(--bg))}
+.side-musician{background:linear-gradient(135deg,rgba(13,148,136,0.04),var(--bg))}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:2px;font-weight:600;margin-bottom:16px;color:var(--accent)}
 .side h2{font-size:28px;font-weight:800;letter-spacing:-0.5px;margin-bottom:16px;line-height:1.2}
 .side p{font-size:15px;color:var(--text2);line-height:1.7;max-width:440px}
 
+/* OWNERSHIP BANNER */
+.ownership-bar{padding:48px 24px;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.ownership-inner{max-width:900px;margin:0 auto;text-align:center}
+.ownership-inner h2{font-size:24px;font-weight:800;letter-spacing:-0.5px;margin-bottom:12px}
+.ownership-inner h2 span{color:var(--accent)}
+.ownership-inner p{font-size:14px;color:var(--text2);line-height:1.7;max-width:640px;margin:0 auto}
+
 /* CTA */
 .cta-section{text-align:center;padding:120px 24px;background:var(--bg);position:relative}
-.cta-section::before{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(circle,rgba(200,100,255,0.06) 0%,transparent 70%);pointer-events:none}
+.cta-section::before{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(circle,rgba(13,148,136,0.05) 0%,transparent 70%);pointer-events:none}
 .cta-section h2{font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-1px;margin-bottom:16px}
 .cta-section p{font-size:16px;color:var(--text2);margin-bottom:32px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.6}
 
@@ -128,13 +131,14 @@ footer{padding:32px;text-align:center;font-size:12px;color:var(--text3);border-t
 
 /* RESPONSIVE */
 @media(max-width:768px){
-  .nav-links a:not(.nav-cta){display:none}
+  .nav-links{display:none}
   .how-grid{grid-template-columns:1fr}
   .sides{grid-template-columns:1fr}
   .hero-counter{gap:24px}
   .hero-counter-num{font-size:28px}
   .browse-grid{grid-template-columns:1fr 1fr}
   .side{padding:48px 24px}
+  .role-tab{padding:14px 16px;font-size:12px}
 }
 @media(max-width:480px){
   .browse-grid{grid-template-columns:1fr}
@@ -151,55 +155,66 @@ footer{padding:32px;text-align:center;font-size:12px;color:var(--text3);border-t
 .modal-brief{font-size:14px;color:var(--text2);line-height:1.7;margin:16px 0;padding:16px;background:var(--bg3);border-radius:10px;border-left:3px solid var(--accent)}
 .modal-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
 .modal-stat{text-align:center;padding:12px;background:var(--bg3);border-radius:8px}
-.modal-stat-num{font-size:20px;font-weight:800}
+.modal-stat-num{font-size:20px;font-weight:800;color:var(--accent)}
 .modal-stat-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px;margin-top:2px}
 .modal-takes{margin-top:20px}
 .modal-takes h3{font-size:14px;font-weight:700;margin-bottom:12px;color:var(--text2);text-transform:uppercase;letter-spacing:1px}
 .modal-take{display:flex;align-items:center;gap:12px;padding:10px;background:var(--bg);border-radius:8px;margin-bottom:6px;border:1px solid var(--border)}
-.modal-take.winner{border-color:var(--green);background:rgba(34,197,94,0.05)}
+.modal-take.winner{border-color:var(--accent);background:rgba(13,148,136,0.05)}
 .modal-take-avatar{width:32px;height:32px;border-radius:50%;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
 .modal-take-name{font-size:13px;font-weight:600;flex:1}
 .modal-take-desc{font-size:12px;color:var(--text2)}
-.modal-take-badge{font-size:10px;font-weight:700;text-transform:uppercase;padding:3px 8px;border-radius:4px;background:rgba(34,197,94,0.15);color:var(--green)}
+.modal-take-badge{font-size:10px;font-weight:700;text-transform:uppercase;padding:3px 8px;border-radius:4px;background:var(--accent-dim);color:var(--accent)}
 .modal-submit{width:100%;margin-top:20px;padding:14px;background:var(--accent);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;transition:all 0.2s}
 .modal-submit:hover{background:var(--accent2)}
+
+/* ROLE TRANSITIONS */
+.hero-content{transition:opacity 0.3s ease}
+.hero-content.fade{opacity:0}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav class="nav">
-  <div class="nav-logo">stem<span>smith</span></div>
-  <div class="nav-links">
-    <a href="#wall">browse stems</a>
-    <a href="#how">how it works</a>
-    <a href="#cta">for musicians</a>
-    <button class="nav-cta" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">get early access</button>
+  <div class="nav-left">
+    <div class="nav-logo">stem<span>smith</span></div>
+    <div class="nav-links">
+      <a href="#wall">browse stems</a>
+      <a href="#how">how it works</a>
+    </div>
+  </div>
+  <div class="role-tabs">
+    <button class="role-tab active" data-role="creator" onclick="switchRole('creator')">i'm a creator</button>
+    <button class="role-tab" data-role="stemsmith" onclick="switchRole('stemsmith')">i'm a stemsmith</button>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-tag">where AI music gets a heartbeat</div>
-  <div class="hero-counter">
-    <div class="hero-counter-item">
-      <div class="hero-counter-num" id="counter-challenges">847</div>
-      <div class="hero-counter-label">stem challenges</div>
+  <div class="hero-content" id="hero-content">
+    <div class="hero-tag" id="hero-tag">where AI music gets a heartbeat</div>
+    <div class="hero-counter">
+      <div class="hero-counter-item">
+        <div class="hero-counter-num" id="counter-challenges">847</div>
+        <div class="hero-counter-label">stem challenges</div>
+      </div>
+      <div class="hero-counter-item">
+        <div class="hero-counter-num" id="counter-musicians">2,419</div>
+        <div class="hero-counter-label">musicians competing</div>
+      </div>
+      <div class="hero-counter-item">
+        <div class="hero-counter-num" id="counter-paid">$184k</div>
+        <div class="hero-counter-label">paid to artists</div>
+      </div>
     </div>
-    <div class="hero-counter-item">
-      <div class="hero-counter-num" id="counter-musicians">2,419</div>
-      <div class="hero-counter-label">musicians competing</div>
+    <h1 id="hero-h1">AI made the song.<br><span class="glow">You make it real.</span></h1>
+    <div class="hero-ownership" id="hero-ownership">human performance = real authorship. real ownership. real royalties.</div>
+    <p class="hero-sub" id="hero-sub">Your Suno track slaps but the vocal sounds like a ghost. Post the stem. Set the bounty. A real musician makes it hit different -- and you own the result.</p>
+    <div class="hero-btns" id="hero-btns">
+      <button class="btn-primary" onclick="document.getElementById('wall').scrollIntoView({behavior:'smooth'})">browse challenges &#8595;</button>
+      <button class="btn-ghost" onclick="switchRole('stemsmith')">i'm a musician</button>
     </div>
-    <div class="hero-counter-item">
-      <div class="hero-counter-num" id="counter-paid">$184k</div>
-      <div class="hero-counter-label">paid to artists</div>
-    </div>
-  </div>
-  <h1>AI made the song.<br><span class="glow">You make it real.</span></h1>
-  <p class="hero-sub">Your Suno track slaps but the vocal sounds like a ghost. Post the stem. Set the bounty. A real musician makes it hit different.</p>
-  <div class="hero-btns">
-    <button class="btn-primary" onclick="document.getElementById('wall').scrollIntoView({behavior:'smooth'})">browse challenges &#8595;</button>
-    <button class="btn-ghost" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">i'm a musician</button>
   </div>
 </section>
 
@@ -208,12 +223,20 @@ footer{padding:32px;text-align:center;font-size:12px;color:var(--text3);border-t
   <div class="marquee" id="marquee"></div>
 </div>
 
+<!-- OWNERSHIP SECTION -->
+<div class="ownership-bar">
+  <div class="ownership-inner">
+    <h2>AI can't own music. <span>You can.</span></h2>
+    <p>AI-generated audio has no legal copyright. The moment a human performs a stem, that contribution creates real authorship. Stemsmith doesn't just make your song sound better -- it gives you a defensible ownership claim, clean rights, and a story that holds up.</p>
+  </div>
+</div>
+
 <!-- THE WALL - Browse Stems -->
 <section class="browse-section" id="wall">
   <div class="section-inner">
     <div class="section-tag">the wall</div>
-    <div class="section-title">every stem that needs a human</div>
-    <div class="section-sub">click one. hear the draft. submit your take. win the bounty.</div>
+    <div class="section-title" id="wall-title">every stem that needs a human</div>
+    <div class="section-sub" id="wall-sub">click one. hear the draft. submit your take. win the bounty.</div>
     <div class="browse-filters" id="filters">
       <div class="browse-filter active" data-filter="all">all stems</div>
       <div class="browse-filter" data-filter="vocal">vocal</div>
@@ -233,9 +256,9 @@ footer{padding:32px;text-align:center;font-size:12px;color:var(--text3);border-t
 <section class="how-section" id="how">
   <div class="section-inner">
     <div class="section-tag">dead simple</div>
-    <div class="section-title">three moves. better song.</div>
+    <div class="section-title" id="how-title">three moves. better song.</div>
     <div class="section-sub">no DAW required. no back-and-forth. no scope creep.</div>
-    <div class="how-grid">
+    <div class="how-grid" id="how-grid">
       <div class="how-card">
         <div class="how-num">1</div>
         <div class="how-icon">&#127925;</div>
@@ -252,7 +275,7 @@ footer{padding:32px;text-align:center;font-size:12px;color:var(--text3);border-t
         <div class="how-num">3</div>
         <div class="how-icon">&#9889;</div>
         <h3>pick the winner</h3>
-        <p>Listen blind. Pick the performance that makes it click. The musician gets paid. You get a song that sounds like a human made it -- because one did.</p>
+        <p>Listen blind. Pick the performance that makes it click. The musician gets paid. You get a song with real authorship -- because a human made the part that matters.</p>
       </div>
     </div>
   </div>
@@ -261,12 +284,12 @@ footer{padding:32px;text-align:center;font-size:12px;color:var(--text3);border-t
 <!-- TWO SIDES -->
 <div class="sides">
   <div class="side side-creator">
-    <div class="side-label creator">for creators</div>
+    <div class="side-label">for creators</div>
     <h2>keep the speed of AI. kill the uncanny valley.</h2>
-    <p>You already love what Suno gives you -- the melody, the structure, the vibe. You just don't want to release something that sounds like it was performed by a smooth neural network. Fix the one stem that matters. Keep everything else.</p>
+    <p>You already love what Suno gives you -- the melody, the structure, the vibe. You just don't want to release something that sounds like it was performed by a smooth neural network. Fix the one stem that matters. Keep everything else. Own the result.</p>
   </div>
   <div class="side side-musician">
-    <div class="side-label musician">for musicians</div>
+    <div class="side-label">for stemsmiths</div>
     <h2>compete on feel, not freelance admin.</h2>
     <p>No proposals. No scope negotiations. No "can you do 47 revisions for $50." One stem. One brief. Nail the take, win the bounty. Your taste and feel are the product -- not your ability to manage clients.</p>
   </div>
@@ -279,7 +302,7 @@ footer{padding:32px;text-align:center;font-size:12px;color:var(--text3);border-t
   <p>We're opening access for creators with promising drafts and musicians who want to compete on real artistry.</p>
   <div class="hero-btns" style="justify-content:center">
     <button class="btn-primary">join as creator</button>
-    <button class="btn-ghost">join as musician</button>
+    <button class="btn-ghost">join as stemsmith</button>
   </div>
 </section>
 
@@ -291,6 +314,64 @@ footer{padding:32px;text-align:center;font-size:12px;color:var(--text3);border-t
 </div>
 
 <script>
+// ROLE SWITCHING
+const roleContent = {
+  creator: {
+    tag: 'where AI music gets a heartbeat',
+    h1: 'AI made the song.<br><span class="glow">You make it real.</span>',
+    ownership: 'human performance = real authorship. real ownership. real royalties.',
+    sub: 'Your Suno track slaps but the vocal sounds like a ghost. Post the stem. Set the bounty. A real musician makes it hit different -- and you own the result.',
+    btns: '<button class="btn-primary" onclick="document.getElementById(\'wall\').scrollIntoView({behavior:\'smooth\'})">post a challenge</button><button class="btn-ghost" onclick="switchRole(\'stemsmith\')">i\'m a musician</button>',
+    wallTitle: 'every stem that needs a human',
+    wallSub: 'browse open challenges. hear the drafts. find the right stemsmith.',
+    howTitle: 'three moves. better song.',
+    howCards: `
+      <div class="how-card"><div class="how-num">1</div><div class="how-icon">&#127925;</div><h3>drop the draft</h3><p>Upload your Suno, Udio, or any AI track. Pick the one stem that gives it away as AI -- the vocal, the guitar, whatever sounds fake.</p></div>
+      <div class="how-card"><div class="how-num">2</div><div class="how-icon">&#127919;</div><h3>set the bounty</h3><p>Name your price, write the brief, set the deadline. Musicians compete on your exact stem. You get multiple takes to choose from.</p></div>
+      <div class="how-card"><div class="how-num">3</div><div class="how-icon">&#9889;</div><h3>pick the winner</h3><p>Listen blind. Pick the performance that makes it click. The musician gets paid. You get a song with real authorship -- because a human made the part that matters.</p></div>
+    `
+  },
+  stemsmith: {
+    tag: 'your taste is the product',
+    h1: 'AI needs your <span class="glow">hands.</span>',
+    ownership: 'real performance. real credit. real money.',
+    sub: 'Creators have AI tracks that almost slap. They need the one stem a machine can\'t fake. Nail the take. Win the bounty. No proposals. No scope creep. Just play.',
+    btns: '<button class="btn-primary" onclick="document.getElementById(\'wall\').scrollIntoView({behavior:\'smooth\'})">browse open bounties &#8595;</button><button class="btn-ghost" onclick="switchRole(\'creator\')">i\'m a creator</button>',
+    wallTitle: 'open bounties',
+    wallSub: 'click one. hear the draft. submit your take. win the bounty.',
+    howTitle: 'three moves. get paid.',
+    howCards: `
+      <div class="how-card"><div class="how-num">1</div><div class="how-icon">&#127911;</div><h3>find your stem</h3><p>Browse the wall. Filter by instrument. Find challenges that match your skills -- vocal, guitar, bass, drums, keys, production, whatever you do best.</p></div>
+      <div class="how-card"><div class="how-num">2</div><div class="how-icon">&#127908;</div><h3>record your take</h3><p>Download the draft. Record your stem. Upload it. No back-and-forth with the creator. One take, one brief, one chance to show what you can do.</p></div>
+      <div class="how-card"><div class="how-num">3</div><div class="how-icon">&#128176;</div><h3>win the bounty</h3><p>If the creator picks your take, you get paid instantly. Your performance, your credit, your royalty share. Compete on feel and taste -- not freelance admin.</p></div>
+    `
+  }
+};
+
+let currentRole = 'creator';
+function switchRole(role){
+  if(role === currentRole) return;
+  currentRole = role;
+  document.querySelectorAll('.role-tab').forEach(t=>{
+    t.classList.toggle('active', t.dataset.role === role);
+  });
+  const c = roleContent[role];
+  const hero = document.getElementById('hero-content');
+  hero.classList.add('fade');
+  setTimeout(()=>{
+    document.getElementById('hero-tag').textContent = c.tag;
+    document.getElementById('hero-h1').innerHTML = c.h1;
+    document.getElementById('hero-ownership').textContent = c.ownership;
+    document.getElementById('hero-sub').textContent = c.sub;
+    document.getElementById('hero-btns').innerHTML = c.btns;
+    document.getElementById('wall-title').textContent = c.wallTitle;
+    document.getElementById('wall-sub').textContent = c.wallSub;
+    document.getElementById('how-title').textContent = c.howTitle;
+    document.getElementById('how-grid').innerHTML = c.howCards;
+    hero.classList.remove('fade');
+  },300);
+}
+
 // STEM DATA GENERATOR
 const songNames = [
   "Midnight Static","Velvet Crash","Neon Therapy","Glass Animals","After The Render",
@@ -374,18 +455,16 @@ function generateStem(i){
   };
 }
 
-// Generate 200 stems
 const stems = [];
 for(let i=0;i<200;i++) stems.push(generateStem(i));
 
-// Render grid
 function renderGrid(filter='all'){
   const grid = document.getElementById('browse-grid');
   const filtered = filter === 'all' ? stems : stems.filter(s=>s.type===filter);
   grid.innerHTML = filtered.map(s=>`
     <div class="stem-card" onclick="openModal(${s.id})" data-type="${s.type}">
       <div class="stem-card-head">
-        <span class="stem-type ${s.type}">${s.type}</span>
+        <span class="stem-type">${s.type}</span>
         <span class="stem-status ${s.status}">${s.status === 'live' ? '&#9679; live' : s.status}</span>
       </div>
       <div class="stem-song">${s.song}</div>
@@ -398,7 +477,6 @@ function renderGrid(filter='all'){
   `).join('');
 }
 
-// Filters
 document.getElementById('filters').addEventListener('click',e=>{
   if(!e.target.classList.contains('browse-filter'))return;
   document.querySelectorAll('.browse-filter').forEach(f=>f.classList.remove('active'));
@@ -406,7 +484,6 @@ document.getElementById('filters').addEventListener('click',e=>{
   renderGrid(e.target.dataset.filter);
 });
 
-// Modal
 function openModal(id){
   const s = stems[id];
   const takes = [];
@@ -418,12 +495,12 @@ function openModal(id){
   const modal = document.getElementById('modal');
   modal.innerHTML = `
     <button class="modal-close" onclick="closeModal()">&times;</button>
-    <span class="stem-type ${s.type}">${s.type}</span>
+    <span class="stem-type">${s.type}</span>
     <h2>${s.song}</h2>
     <div class="modal-brief">"${s.brief}"</div>
     <div class="modal-stats">
       <div class="modal-stat">
-        <div class="modal-stat-num" style="color:var(--green)">$${s.bounty}</div>
+        <div class="modal-stat-num">$${s.bounty}</div>
         <div class="modal-stat-label">bounty</div>
       </div>
       <div class="modal-stat">
@@ -460,19 +537,17 @@ function closeModal(){
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 
-// Marquee
 function buildMarquee(){
   const m = document.getElementById('marquee');
   const items = [];
   for(let i=0;i<40;i++){
     const s = stems[i];
-    const dotClass = s.status === 'live' ? 'live' : s.status === 'won' ? 'won' : 'new';
+    const dotClass = s.status === 'live' ? 'live' : 'won';
     items.push(`<div class="marquee-item"><span class="marquee-dot ${dotClass}"></span><span class="marquee-song">${s.song}</span><span class="marquee-stem">${s.type}</span><span class="marquee-bounty">$${s.bounty}</span></div>`);
   }
   m.innerHTML = items.join('') + items.join('');
 }
 
-// Counter animation
 function animateCounter(el,target,prefix='',suffix=''){
   const isK = typeof target === 'string' && target.includes('k');
   const num = isK ? parseFloat(target) : parseInt(target.toString().replace(/,/g,''));
@@ -486,11 +561,8 @@ function animateCounter(el,target,prefix='',suffix=''){
   },16);
 }
 
-// Init
 renderGrid();
 buildMarquee();
-
-// Animate counters on load
 setTimeout(()=>{
   animateCounter(document.getElementById('counter-challenges'),847);
   animateCounter(document.getElementById('counter-musicians'),2419);
